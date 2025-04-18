@@ -187,7 +187,10 @@ async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                     country = message.venue.address.split(',')[-1].strip() if ',' in message.venue.address else "Unknown"
 
         # Format content
-        content = f"Place Name: {place_name}\nCity: {city}\nCountry: {country}\nLatitude: {lat}\nLongitude: {long}"
+        if place_name != "Unknown":
+            content = f"Place Name: {place_name}\nCity: {city}\nCountry: {country}\nLatitude: {lat}\nLongitude: {long}"
+        else:
+            content = f"City: {city}\nCountry: {country}\nLatitude: {lat}\nLongitude: {long}"
         
         await append_to_notion(timestamp, "location", content)
         await message.reply_text(f"Location saved to Notion: {timestamp}: location : {content}")
@@ -345,6 +348,7 @@ def main() -> None:
 
     # Add handlers
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
+    application.add_handler(MessageHandler(filters.LOCATION, handle_location))
     application.add_handler(MessageHandler(
         filters.Document.ALL | filters.VOICE | filters.PHOTO | filters.VIDEO,
         download_media
