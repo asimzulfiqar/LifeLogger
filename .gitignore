@@ -1,3 +1,4 @@
-./secrets_txt.py
-trnscriber.py
-./downloads
+transcriber.py
+__pycache__/
+secrets_txt.py
+downloads/
