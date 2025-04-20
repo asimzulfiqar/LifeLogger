@@ -5,13 +5,10 @@ import os
 from datetime import datetime
 import whisper
 from notion_client import Client
-import asyncio
 import secrets_txt as secrets  # Ensure you have a secrets.py file with your tokens
 from PIL import Image
 import pytesseract
-import cv2
 import numpy as np
-import tempfile
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 
