@@ -26,7 +26,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Create Downloads folder if it doesn't exist
-DOWNLOADS_DIR = r"D:\Side project\Life Logging\Telegram-bot\downloads"
+DOWNLOADS_DIR = r"./downloads"
 if not os.path.exists(DOWNLOADS_DIR):
     os.makedirs(DOWNLOADS_DIR)
 
